@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SWSales</name>
+    <description>
+        
+    </description>
+    <author email="sviluppo@swtechlab.it" href="sviluppo@swtechlab.it">
+        SWTechLab
+    </author>
+    <content src="index.html" />
+    
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <access origin="cdvfile://*"/>
+   <plugin name="cordova-plugin-whitelist"      source="npm" spec="1.1.0" />
+        <allow-navigation href="*" />
+        <allow-intent href="*" />
+        <access origin="*" /> <!-- Required for iOS9 -->
+    <plugin name = "phonegap-plugin-barcodescanner" spec = "^ 7.0.2">
+        <param name = "CAMERA_USAGE_DESCRIPTION" value = "To scan barecode" />
+    </plugin>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    
+    
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>

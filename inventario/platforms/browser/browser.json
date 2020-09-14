@@ -1,0 +1,69 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"BarcodeScanner\"><param name=\"browser-package\" value=\"BarcodeScanner\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-browsersync": {
+      "PACKAGE_NAME": "com.inventario.app"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.inventario.app"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "com.inventario.app"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+      "id": "cordova-plugin-dialogs.notification",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
+      "file": "plugins/cordova-plugin-dialogs/www/browser/notification.js",
+      "id": "cordova-plugin-dialogs.notification_browser",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "clobbers": [
+        "cordova.plugins.barcodeScanner"
+      ]
+    },
+    {
+      "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "runs": true
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-browsersync": "0.1.7",
+    "cordova-plugin-dialogs": "2.0.2",
+    "phonegap-plugin-barcodescanner": "7.1.2"
+  }
+}

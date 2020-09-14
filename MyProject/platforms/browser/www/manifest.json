@@ -1,0 +1,10 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "SWSales",
+  "short_name": "SWSales",
+  "version": "io.cordova.hellocordova",
+  "author": "SWTechLab",
+  "icons": [],
+  "start_url": "index.html"
+}

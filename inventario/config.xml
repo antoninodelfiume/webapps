@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.inventario.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Inventario DOC</name>
+    <description>
+        Gestisce la quantita dei prodotti in giacenza
+    </description>
+    <author email="sviluppo@swtechlab.it" href="sviluppo@swtechlab.it">
+        SWTechLab
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist"      source="npm" spec="1.1.0" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <plugin name = "phonegap-plugin-barcodescanner" spec = "^ 7.0.2">
+        <param name = "CAMERA_USAGE_DESCRIPTION" value = "To scan barecode" />
+    </plugin>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    
+    <platform name="android">
+        <icon src="/www/img/docimage.jpg" density="ldpi"/>
+       
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>
