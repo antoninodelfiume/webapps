@@ -37,6 +37,7 @@ var app = {
     }
     
 };
+app.initialize();
 
 function showAlert(message, callback,title,buttonName){
         navigator.notification.alert(
@@ -70,6 +71,9 @@ function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+
+
+
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -90,4 +94,5 @@ function setAgenteData(){
     document.getElementById("age_name").innerHTML="<b>"+getCookie("nome")+"</b>";
    // document.getElementById("age_code").innerHTML="<b>"+getCookie("code")+"</b>";
 }
-app.initialize();
+
+

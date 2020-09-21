@@ -159,20 +159,31 @@ label {
 				</p>
 			</div>
 		</div>
+      
 		<div class="row">
+            
 			<div class="col-md-12 col-sm-12"
-				style="font-size: 13px; margin-top: 2%; margin-bottom: 40px;">
+				style="font-size: 13px; margin-top: 2%; margin-bottom: 20px;">
 				<label for="cliente"><b>Barcode</b></label> <input type="text"
 					class="form-control" id="barcode" onkeyup="checkKey(event)"
 					name="barcode"> 
 			</div>
-            <div class="col-sm-12 col-md-12 " style="margin-top:10px;">
+            <div class="col-sm-12 col-md-12 " style="margin-top:5px;">
 
 				<button type="button" class="btn btn-danger" style="width:100%" 
                         onclick="runScanner()"><span class="glyphicon glyphicon-camera"> SCAN</span></button>
 
 			</div>
 		</div>
+        <div class="row"  style=" margin-top: 5%;">
+            <div class="col-md-12 col-sm-12"
+                    style="font-size: 13px; margin-top: 2%; margin-bottom: 40px;">
+                    <label for="descrizione"><b>Descrizione</b></label> <input type="text"
+                        class="form-control" id="descrizione" 
+                        name="descrizione"> 
+            </div>
+        
+        </div>
 		
 			
 
@@ -184,10 +195,15 @@ label {
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-
+                    <div class="row">
+						<div class="col-md-12">
+							<b>Codice</b> <input type="text" id="codmxl" name="codmxl"  readonly
+								class="form-control">
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<b>Codice</b> <input type="text" id="product" name="product"  readonly
+							<b>Barcode</b> <input type="text" id="product" name="product"  readonly
 								class="form-control"><input type="hidden" id="product-idx" name="product-idx">
 						</div>
 					</div>
@@ -203,9 +219,32 @@ label {
 								class="form-control">
 						</div>
 					</div>
-					<div class="row">
+                      <div class="row">
 						<div class="col-md-12">
-							<b>Quantità inventario</b> <input type="text" id="qtainv" name="qtainv"
+							<b>Prezzo 1</b> <input type="text" id="prz" name="prz" readonly
+								class="form-control">
+						</div>
+					</div>
+                     <div class="row">
+						<div class="col-md-12">
+							<b>Costo ultimo</b> <input type="text" id="cstul" name="cstul" readonly
+								class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<b>Quantità inventario</b> <input type="text" readonly id="qtainv" name="qtainv"
+								class="form-control">
+						</div>
+                        <div class="col-md-1 col-sm-1">
+                            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                            <input type="button" class="btn btn-danger" onclick="sbloccaQtaInv();" value="Modifica">
+						</div>
+					</div>
+                    
+                    <div class="row">
+						<div class="col-md-12">
+							<b>Quantità da aggiungere</b> <input type="text" id="qtagg" name="qtagg"
 								class="form-control">
 						</div>
 					</div>
@@ -302,4 +341,9 @@ label {
    
 
 </body>
+ <script>
+$(document).ready(function(){
+    getProductForAutocomplete();
+    })
+</script>   
 </html>

@@ -30,7 +30,7 @@
         -->
        
       <meta http-equiv="Content-Security-Policy"
-	content="default-src * 'self' 'unsafe-inline' data: gap: 'unsafe-eval';
+	   content="default-src * 'self' 'unsafe-inline' data: gap: 'unsafe-eval';
         style-src * 'self' 'unsafe-inline'; 
         connect-src * ; 
         script-src * 'self' 'unsafe-inline'; 
@@ -39,13 +39,14 @@
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover,  user-scalable=no">
         <link rel="stylesheet" href="css/bootstrap-4.3.1-dist/css/bootstrap.css" >
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        
+        <script type="text/javascript" src="cordova.js"></script>
          <script src="css/bootstrap-4.3.1-dist/js/bootstrap.js" ></script>
         <script type="text/javascript" src="js/config.js"></script>
         
         <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
           <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/lettura_seq.js"></script>
         <title>SWSales</title>
         <script>
             $(document).ready(function(){
@@ -126,9 +127,8 @@
                <div class="row">
                    <div class="col-md-12" style="font-size:13px; margin-bottom:20px; ">
                        <ul class="nav navbar-nav navbar-right right-buffer">
-                           <a href="#" onclick="window.location='gestisci_quantita.html'"><li><b><b style="" class="glyphicon glyphicon-indent-left"></b> &nbsp; Gestisci quantità</b></li></a>
-                        <!--   <a href="#" onclick="logout()"><li><b><b style="" class="glyphicon glyphicon glyphicon-list-alt"></b>&nbsp;Estratto conto</b></li></a>
-                           <a href="#" onclick="logout()"><li><b><b style="" class="glyphicon glyphicon glyphicon-download-alt"></b>&nbsp;Stampa fattura</b></li></a> -->
+                           <a href="#" onclick="runScannerSequenziale()"><li><b><b style="" class="glyphicon glyphicon-barcode"></b> &nbsp; Rilevazione sequenziale</b></li></a>
+                           <a href="#" onclick="window.location='gestisci_quantita.html'"><li><b><b style="" class="glyphicon glyphicon-indent-left"></b> &nbsp; Gestisci</b></li></a>
                            <a id="logout" href="#" onclick="logout()"><li id="lilogout"><b><b style="" class="glyphicon glyphicon-log-out"></b>&nbsp;Logout</b></li></a>
                         </ul>
                     </div>
