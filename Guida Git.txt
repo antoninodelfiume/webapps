@@ -1,0 +1,13 @@
+CREARE CARTELLA DI RIFERIMENTO IN LOCALE (ES. WEBAPPS)
+
+CREARE ACCOUNT SU GITHUB E NUOVO REPOSITORY
+
+APRIRE IL PROMPT E DIGITARE I SEGUENTI COMANDI:
+
+git remote add origin https://github.com/yourusername/your-repo-name.git
+
+
+
+git add .
+git commit -m "adding files"
+git push -u origin master

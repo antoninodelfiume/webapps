@@ -1,0 +1,3 @@
+cordova build android           ->    viene usato per generare l'apk
+
+cordova run -- --live-reload    ->  viene usato per avviare l'applicazione

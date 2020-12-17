@@ -10,7 +10,7 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
-    <name>Inventario DOC</name>
+    <name>SWTL APP</name>
     <description>
         Gestisce la quantita dei prodotti in giacenza
     </description>
@@ -26,7 +26,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <icon density="ldpi" src="/www/img/docimage.jpg" />
+    <icon density="ldpi" src="/www/img/swtl.png" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
 </widget>

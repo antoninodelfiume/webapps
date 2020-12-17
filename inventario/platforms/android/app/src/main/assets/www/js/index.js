@@ -28,7 +28,9 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-        console.log(navigator.notification);    
+        console.log(navigator.notification);
+        document.addEventListener("backbutton", onBackKeyDown, false);
+       
     },
 
     // Update DOM on a Received Event
@@ -38,7 +40,17 @@ var app = {
     
 };
 app.initialize();
-
+function onBackKeyDown(){
+    if(window.location.href.indexOf("index.html") != -1 || window.location.href.indexOf("sel_data.html")!=-1){
+        logout();
+    }else if(window.location.href.indexOf("login.html")!=-1){
+        logout();
+         navigator.app.exitApp();
+    }
+    else{
+        window.location="index.html";
+    }
+}
 function showAlert(message, callback,title,buttonName){
         navigator.notification.alert(
             message,  // message

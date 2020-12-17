@@ -1,8 +1,8 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "Inventario DOC",
-  "short_name": "Inventario DOC",
+  "name": "SWTL APP",
+  "short_name": "SWTL APP",
   "version": "com.inventario.app",
   "description": "Gestisce la quantita dei prodotti in giacenza",
   "author": "SWTechLab",

@@ -30,9 +30,9 @@
         -->
 
 <meta http-equiv="Content-Security-Policy"
-	content="style-src * 'self' 'unsafe-inline'; 
-        connect-src * ; 
-        script-src * 'self' 'unsafe-inline'; 
+	content="style-src * 'self' 'unsafe-inline';
+        connect-src * ;
+        script-src * 'self' 'unsafe-inline';
         media-src *">
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="viewport"
@@ -61,6 +61,12 @@
 	});
 </script>
 <style>
+#imgArticolo {
+  width: 100%;
+  height: auto;
+  /* Magic! */
+  max-width: 50vw;
+}
 .ui-autocomplete {
 	z-index: 9999 !important;
 }
@@ -129,6 +135,7 @@ label {
 }
 
 .ui-autocomplete {
+
 	max-height: 250px;
 	overflow-y: auto;
 	/* prevent horizontal scrollbar */
@@ -159,18 +166,18 @@ label {
 				</p>
 			</div>
 		</div>
-      
+
 		<div class="row">
-            
+
 			<div class="col-md-12 col-sm-12"
 				style="font-size: 13px; margin-top: 2%; margin-bottom: 20px;">
 				<label for="cliente"><b>Barcode</b></label> <input type="text"
 					class="form-control" id="barcode" onkeyup="checkKey(event)"
-					name="barcode"> 
+					name="barcode">
 			</div>
             <div class="col-sm-12 col-md-12 " style="margin-top:5px;">
 
-				<button type="button" class="btn btn-danger" style="width:100%" 
+				<button type="button" class="btn btn-danger" style="width:100%"
                         onclick="runScanner()"><span class="glyphicon glyphicon-camera"> SCAN</span></button>
 
 			</div>
@@ -179,23 +186,35 @@ label {
             <div class="col-md-12 col-sm-12"
                     style="font-size: 13px; margin-top: 2%; margin-bottom: 40px;">
                     <label for="descrizione"><b>Descrizione</b></label> <input type="text"
-                        class="form-control" id="descrizione" 
-                        name="descrizione"> 
+                        class="form-control" id="descrizione"
+                        name="descrizione">
             </div>
-        
-        </div>
-		
-			
 
-		
+        </div>
+
+
+
+
 	</div>
-    
+
     <div class="modal fade" id="gestisciQuantita" tabindex="-1"
 		role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-                    <div class="row">
+					<div class="row">
+							<div class="col-md-12">
+
+								<img id="imgArticolo" alt="Nessuna immagine disponibile per questo articolo" ></img>
+
+							</div>
+					</div>
+					<div class="row" id="nonOrdinabileDiv" style="">
+						<div class="col-md-12">
+							<span style="color:red"><b>&#8226; Non ordinabile</b></span>
+						</div>
+					</div>
+          <div class="row" style="margin-top:20px;">
 						<div class="col-md-12">
 							<b>Codice</b> <input type="text" id="codmxl" name="codmxl"  readonly
 								class="form-control">
@@ -225,12 +244,27 @@ label {
 								class="form-control">
 						</div>
 					</div>
-                     <div class="row">
+
+         <div class="row">
 						<div class="col-md-12">
 							<b>Costo ultimo</b> <input type="text" id="cstul" name="cstul" readonly
 								class="form-control">
 						</div>
 					</div>
+					<div class="row">
+						 <div class="col-md-12">
+							 <b>Ordinato da clienti</b> <input type="text" id="ordcli" name="ordcli" readonly
+								 class="form-control">
+						 </div>
+					 </div>
+					 <div class="row">
+						 <div class="col-md-12">
+							 <b>Ordinato a fornitori</b> <input type="text" id="ordfor" name="ordfor" readonly
+								 class="form-control">
+						 </div>
+					 </div>
+
+
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
 							<b>Quantità inventario</b> <input type="text" readonly id="qtainv" name="qtainv"
@@ -241,28 +275,61 @@ label {
                             <input type="button" class="btn btn-danger" onclick="sbloccaQtaInv();" value="Modifica">
 						</div>
 					</div>
-                    
+
                     <div class="row">
 						<div class="col-md-12">
 							<b>Quantità da aggiungere</b> <input type="text" id="qtagg" name="qtagg"
 								class="form-control">
 						</div>
 					</div>
-					
+
 				</div>
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-					<button type="submit" class="btn btn-danger"
+					<button type="submit" class="btn btn-danger" id="cfrQta"
 						onclick="aggiornaQuantita()">Conferma</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
+
+    <div class="modal fade" id="registraNuovoBarcode" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+							<b>Articolo</b> <input type="text" id="bcProd" name="bcProd"
+								class="form-control">
+                                <input type="hidden" id="bcProdHidden" name="bcProdHidden" >
+						</div>
+						<div class="col-md-12">
+							<b>Barcode</b> <input type="text" id="newBarcode" name="newBarcode"  readonly
+								class="form-control">
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+					<button type="submit" class="btn btn-danger" id="regBarcBtn"
+						onclick="salvaBarcode()">Conferma</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
     <!-- <div class="container-fluid">
         <div clas="row" id="showArticoli" style="display: none;">
-           
+
             <div style="max-height:250px;overflow-x:hidden;overflow-y:auto">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:2%">
@@ -283,8 +350,8 @@ label {
                         </div>
                     </div>
             </div>
-                
-                    
+
+
                          <div class="row" style="margin-top:5px;">
                              <div class="col-5 col-md-2 col-sm-5 col-lg-5">
                                <label>Importo totale </label>
@@ -300,9 +367,9 @@ label {
                                  <button type="button" class="btn btn-default" onclick="generaVendita();"><span class="glyphicon glyphicon-ok"></span></button>
                              </div>
                          </div>
-                    
+
                 </div>
-            
+
     </div>
 	<div class="modal fade" id="inserisciArticolo" tabindex="-1"
 		role="dialog">
@@ -312,7 +379,7 @@ label {
 
 					<div class="row">
 						<div class="col-md-12">
-							<b>Articolo</b> <input type="text" id="product" name="product" 
+							<b>Articolo</b> <input type="text" id="product" name="product"
 								class="form-control"><input type="hidden" id="product-idx" name="product-idx">
 						</div>
 					</div>
@@ -338,12 +405,12 @@ label {
 			</div>
 		</div>
 	</div>-->
-   
+
 
 </body>
  <script>
 $(document).ready(function(){
     getProductForAutocomplete();
     })
-</script>   
+</script>
 </html>

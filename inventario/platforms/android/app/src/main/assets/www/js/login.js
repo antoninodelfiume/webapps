@@ -14,7 +14,8 @@ function loginSubmit(){
                   
                    setCookie("username",username,10);  
                    setCookie("nome",data[0].USR_USER,10);  
-                   setCookie("usr_idx",data[0].USR_IDX,10);  
+                   setCookie("usr_idx",data[0].USR_IDX,10);
+                   setCookie("azienda",data[0].USR_AZ,10);  
                    //setCookie("code",data[0].AGE_CODE,10);  
                    window.location="sel_data.html";    
 	
@@ -42,14 +43,13 @@ function checkData(){
       $.ajax({
             type:"POST",  //Request type
             url: "http://"+php_files+"checkData.php",   
-            data:{data_inv:data_inv},
+            data:{data_inv:data_inv,azienda:getCookie("azienda")},
             cache:false,
             dataType: "text",
             success:function(data) {
                if(data == "true"){
                   showAlert("La data che hai inserito è stata gia movimentata nel gestionale, seleziona un'altra data per continuare","","Attenzione", "OK" );
-                  location.reload();
-                   
+                                     
                }else{
                   setCookie("data_inv",data_inv,10);  
                    
@@ -73,11 +73,12 @@ function checkLastDate(){
             type:"POST",  //Request type
             url: "http://"+php_files+"checkLastDate.php",   
             cache:false,
-            dataType: "json",
-            success:function(json) {
-              if(json.length>0){
-                  document.getElementById("data_inventario").value=json[0].IN_DATA;
-              }
+            data:{azienda:getCookie("azienda")},
+            dataType: "text",
+            success:function(text) {
+              
+                  document.getElementById("data_inventario").value=text;
+              
             },
             error: function (jqXHR, textStatus, errorThrown){
                 alert("Si e' verificato un errore: jqXHR: " + jqXHR + " ------ errorThrown: " + errorThrown + "----- textStatus: "+ textStatus);
@@ -92,5 +93,7 @@ function logout(){
     setCookie("username","",10);  
     setCookie("nome","",10);  
     setCookie("code","",10);  
+    setCookie("data_inv","",10);  
+    setCookie("azienda","",10);  
     window.location="login.html";
 }
